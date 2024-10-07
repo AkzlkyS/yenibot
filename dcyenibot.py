@@ -62,9 +62,12 @@ async def resim(ctx):
 
 @bot.command()
 async def meme(ctx):
-    x= random.choice(os.listdir("images"))
-    with open(f"images/{x}","rb") as f:
-        picture=discord.File(f)
+    memes = ["bir.png", "iki.png", "üç.png", "dört.jpg"]
+    weights = [50, 25, 15, 10]
+    selected_meme = random.choices(memes, weights=weights, k=1)[0]
+
+    with open(f"images/{selected_meme}", "rb") as f:
+        picture = discord.File(f)
     await ctx.send(file=picture)
 
 def get_duck_image_url():    
@@ -105,4 +108,7 @@ async def pokemon(ctx):
     image_url = get_pokemon_image_url()
     await ctx.send(image_url)
 
-bot.run("00000000000000")
+
+
+
+bot.run("000000000000000000")
